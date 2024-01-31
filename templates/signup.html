@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Bucket List App</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"> -->
+
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <!-- <script type="text/javascript">
+    function IsEmpty() {
+      if (document.form.inputName.value == "") {
+        alert("Field is Empty");
+      }
+      return;
+    }
+  </script> -->
+  <script>
+function validateForm() {
+  var x = document.forms["myForm"]["inputName"].value;
+  if (x == "" || x == null) {
+    alert("Name must be filled out");
+    // return false;
+  }
+}
+</script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <!-- <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation"><a href="index">Sign In</a></li>
+            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Python Flask App</h3>
+      </div>
+ -->
+      <div class="jumbotron">
+        <h1>Build A Thon</h1>
+        <form name="myForm" class="form-signin">
+        <label for="inputName" class="sr-only">Name</label>
+        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+        <!-- <input type="role" name="inputRole" id="inputRole" class="form-control" placeholder="Admin/Employee/Manager" required> -->
+        <select name="inputRole" id="inputRole">
+          <option value="Admin">Admin</option>
+          <option value="Employee">Employee</option>
+          <option value="Manager">Manager</option>
+        </select>
+        <button id="btnSignUp"  class="btn btn-lg btn-primary btn-block" type="button">Login/Sign up</button>
+        </form>
+      </div>
+
+
+
+      <footer class="footer">
+        <p>BuildAThon App 2021</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

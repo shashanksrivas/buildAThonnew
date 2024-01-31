@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- <head>
+    <title>BuildAThon</title> -->
+
+
+    <head>
+      <title>BuildAThon</title>
+
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+      <!-- <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"> -->
+
+      <link href="../static/css/signup.css" rel="stylesheet">
+      <script src="../static/js/jquery-1.11.2.js"></script>
+      <script src="../static/js/signUp.js"></script>
+      <style>
+      div {
+        /* border: 1px solid black; */
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-right: 150px;
+        margin-left: 80px;
+        background-color: lightblue;
+        font-family: "Times New Roman", Times, serif;
+        color:MediumSeaGreen;
+      }
+      </style>
+      <script type="text/javascript">
+
+
+      function add() {
+
+          // Add li element
+          var node = document
+          .createElement("li");
+
+          // Add element into the list
+          var textnode = document
+          .createTextNode("JS");
+
+          // Append the element into the list
+          node.appendChild(textnode);
+          document.getElementById("myList")
+          .appendChild(node);
+
+          // Alert message when element gets added
+          alert("Element is getting added") ;
+      }
+
+      function setithidden(){
+        document.getElementById('nooftransaction').style.visibility = 'hidden';
+        document.getElementById('monthlyachievement').style.visibility = 'hidden';
+        document.getElementById('eventTimeline').style.visibility = 'hidden';
+        document.getElementById('activityName').style.visibility = 'hidden';
+        document.getElementById('decision').style.visibility = 'hidden';
+
+        document.getElementById('roleName').style.visibility = 'hidden';
+        document.getElementById('activeinactive').style.visibility = 'hidden';
+        document.getElementById('assessmenttimeline').style.visibility = 'hidden';
+        document.getElementById('dailyupdatetimeline').style.visibility = 'hidden';
+        // if {{status}}!=Null{
+        //     alert({{status}})
+        // }
+
+      }
+
+      function setitasrequired(){
+        var e=document.getElementById("trigger");
+        var value = e.options[e.selectedIndex].value;
+        print("value selected",value)
+        if (value=="scorebased"){
+          setithidden()
+          document.getElementById('nooftransaction').style.visibility = 'visible';
+          document.getElementById('monthlyachievement').style.visibility = 'visible';
+        }
+        else if(value=="eventbased"){
+          setithidden()
+          document.getElementById('eventTimeline').style.visibility = 'visible';
+        }
+        else if(value=="statusbased"){
+          setithidden()
+          document.getElementById('activeinactive').style.visibility = 'visible';
+        }
+        else if(value=="participation"){
+          setithidden()
+          document.getElementById('activityName').style.visibility = 'visible';
+        }
+        else if(value=="randomtrigger"){
+          setithidden()
+          // document.getElementById('randomtrigger').style.visibility = 'visible';
+        }
+        else if(value=="rolebased"){
+          setithidden()
+          document.getElementById('roleName').style.visibility = 'visible';
+        }
+        else if(value=="timebased"){
+          setithidden()
+          document.getElementById('assessmenttimeline').style.visibility = 'visible';
+          document.getElementById('dailyupdatetimeline').style.visibility = 'visible';
+
+        }
+
+      }
+
+      </script>
+
+    </head>
+
+  <!-- </head> -->
+
+  <body onload="setithidden()" >
+
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1>create Trigger</h1>
+        <form class="form-signin">
+        <label for="html">AdminId</label><br>
+        <input type="name" name="adminid" id="adminid" class="form-control" value={{id}} disable required autofocus>
+        <label for="cars">Choose a Trigger:</label>
+
+        <div id ="dvContainer">
+          <script type="text/javascript">
+          var ddlCustomers = document.createElement("SELECT");
+          ddlCustomers.name = "users";
+          ddlCustomers.id = "users"
+          {% for item in userid %}
+          var option = document.createElement("OPTION");
+          //Set Customer Name in Text part.
+          option.innerHTML = {{item}};
+          //Set CustomerId in Value part.
+          option.value ={{item}};
+          //Add the Option element to DropDownList.
+          ddlCustomers.options.add(option);
+          console.log({{item}})
+          {% endfor %}
+          //Reference the container DIV.
+          var dvContainer = document.getElementById("dvContainer")
+          //Add the DropDownList to DIV.
+          var div = document.createElement("DIV");
+          div.appendChild(ddlCustomers);
+          //Add the DIV to the container DIV.
+          dvContainer.appendChild(div);
+          </script>
+        </div>
+        <select name="trigger" id="trigger" onchange="setitasrequired()">
+          <option value="select">Select</option>
+          <option value="scorebased">Score based</option>
+          <option value="eventbased">Event Based</option>
+          <option value="statusbased">Status Based</option>
+          <option value="participation">Participation level</option>
+          <option value="randomtrigger">Random trigger</option>
+          <option value="rolebased">Role based</option>
+          <option value="timebased">Time based</option>
+        </select>
+        <input type="name"  style="height: 10px;" name="nooftransaction" id="nooftransaction" class="form-control" placeholder="nooftransaction" required autofocus>
+        <input type="name"  style="height: 10px;" name="monthlyachievement" id="monthlyachievement" class="form-control" placeholder="monthlyachievement" required autofocus>
+        <input type="name"  style="height: 10px;" name="eventTimeline" id="eventTimeline" class="form-control" placeholder="3Y-m-d H:M:S.f" required autofocus>
+        <input type="name"  style="height: 10px;" name="activeinactive" id="activeinactive" class="form-control" placeholder="activeinactive" required autofocus>
+        <input type="name" style="height: 10px;" name="activityName" id="activityName" class="form-control" placeholder="activityName" required autofocus>
+        <input type="name" style="height: 10px;" name="decision" id="decision" class="form-control" placeholder="decision" required autofocus>
+        <input type="name" style="height: 10px;" name="roleName" id="roleName" class="form-control" placeholder="Manager/Employee" required autofocus>
+        <input type="name" style="height: 10px;" name="assessmenttimeline" id="assessmenttimeline" class="form-control" placeholder="1Y-m-d H:M:S.f" required autofocus>
+        <input type="name" style="height: 10px;" name="dailyupdatetimeline" id="dailyupdatetimeline" class="form-control" placeholder="2Y-m-d H:M:S.f" required autofocus>
+
+      <button id="mapping" class="btn btn-lg btn-primary btn-block" type="button">create mapping</button>
+      </form>
+
+      <footer class="footer">
+        <p>BuildAThon App 2021</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

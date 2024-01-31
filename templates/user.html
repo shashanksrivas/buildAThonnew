@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- <head>
+    <title>BuildAThon</title> -->
+
+
+    <head>
+      <title>BuildAThon</title>
+
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+      <!-- <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"> -->
+
+      <link href="../static/css/signup.css" rel="stylesheet">
+      <script src="../static/js/jquery-1.11.2.js"></script>
+
+    </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="jumbotron">
+        <!-- <ul id="notificationlist"></ul>
+        </ul> -->
+        <label for="html">Notification </label><br>
+        <div id = "dvContainer">
+        <script type="text/javascript">
+        // function addNotifications(){
+          // alert("notify")
+          var ddlCustomers = document.createElement("SELECT");
+          ddlCustomers.name = "users";
+          ddlCustomers.id = "users"
+          //Add the Options to the DropDownList.
+          {% for key, value in notifications.items() %}
+          // for (var i = 0; i < notifications.length; i++) {
+          // console.log({{key}})
+          // console.log({{value}})
+          //    <th> {{ key }} </th>
+             // <td> {{ value }} </td>
+
+          var option = document.createElement("OPTION");
+          //Set Customer Name in Text part.
+          option.innerHTML = {{key}};
+          //Set CustomerId in Value part.
+          option.value ={{key}};
+          //Add the Option element to DropDownList.
+          ddlCustomers.options.add(option);
+
+          {% endfor %}
+          // }
+
+          //Reference the container DIV.
+          var dvContainer = document.getElementById("dvContainer")
+
+          //Add the DropDownList to DIV.
+          var div = document.createElement("DIV");
+          div.appendChild(ddlCustomers);
+
+          //Add the DIV to the container DIV.
+          dvContainer.appendChild(div);
+        // }
+
+        </script>
+        </div>
+
+        <!-- <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">see all notification</button> -->
+
+        <!-- <button onclick="addNotifications()">
+            Notifications
+        </button> -->
+
+      </div>
+
+      <div class="jumbotron">
+        <h1>User Details</h1>
+        <!-- <form class="form-signin"> -->
+        <label for="html">Username and Userid</label><br>
+        <input type="name" name="inputName" id="inputName" class="form-control" value={{Username}} disabled required autofocus>
+        <input type="name" name="userid" id="userid" class="form-control" value={{id}} disabled required autofocus>
+
+        <!-- <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button> -->
+        <!-- </form> -->
+
+      </div>
+
+      <footer class="footer">
+        <p>BuildAThon App 2021</p>
+      </footer>
+
+    </div>
+  </body>
+</html>
